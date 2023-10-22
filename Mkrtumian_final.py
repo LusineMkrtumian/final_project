@@ -24,7 +24,9 @@ def user_input_features():
 df_2 = user_input_features()
 
 # Загружаем набор данных
-df = pd.read_csv(r'C:\Users\l.mkrtumyan\ebw_data.csv')
+import urllib.request
+csv_url = ("https://raw.githubusercontent.com/LusineMkrtumian/final_project/main/ebw_data.csv")
+df = pd.read_csv(csv_url, on_bad_lines='skip')
 
 X = df.drop(["Width", "Depth"], axis=1)  # убираем целевые переменные
 Y = df[["Width", "Depth"]].copy()  # копируем, чтобы не трогать исходный датафрейм
